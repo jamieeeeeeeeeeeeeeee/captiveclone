@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UoM WiFi | Login</title>
+    <style>
+        html {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            font-family :-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 34px;
+        }
+
+        * {
+            font-family: inherit;
+            font-weight: 400;
+        }
+
+        main {
+            background-color: rgba(51, 51, 51, 0.8);
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 4px;
+            padding: 16px;
+            margin: 16px;
+            margin-bottom: 0;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2 {
+            margin: 6px 0;
+        }
+
+        h1, h2, h4, h6, p {
+            color: white;
+        }
+
+        h2, h4, p {
+            text-align: left;
+        }
+
+        a {
+            color: #CC28CC;
+            text-decoration: none;
+        }
+
+        br {
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        b {
+            font-weight: 700;
+        }
+        
+        div {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="text"], input[type="password"] {
+            margin-top: 6px;
+            margin-bottom: 12px; 
+            padding: 5px;
+            border-radius: 2px;
+            border: none;
+            border: 1px solid #CCC;
+        }
+
+        input[type="text"]::placeholder, input[type="password"]::placeholder {
+            color: #555;
+        }
+
+        form > p {
+            margin-top: 8px;
+            margin-bottom: 2px;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: 1px solid #CC28CC; 
+        }
+
+        input[type="submit"] {
+            background-color: #CC28CC;
+            color: white;
+            border: none;
+            cursor: pointer;
+            opacity: 0.4;
+            padding: 6px 8px;
+            width: 64px;
+            border-radius: 4px;
+            align-self: center;
+            margin: 8px 0;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #copyright {
+            font-size: 12px;
+            padding: 16px;
+            opacity: 0.5;
+            color: #212529;
+        }
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/background_image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -999999;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <img src="assets/uom.png" alt="UoM Logo" width="100">
+        <h1>UoM <span style="color:#CC28CC">WiFi</span></h1>
+        <h6> Welcome to UoM WiFi, this is a temporary WIFI service with restrictions. To continue to use this service please login using your UoM Credentials at the bottom of this page.
+            However, to gain full access to the WIFI campus service please connect to Eduroam in your device WiFi settings.</h6>
+        <h2>Connecting to Eduroam</h2>
+        <h4>As a student or member of staff, we would strongly recommend that you use Eduroam instead of this captive portal UoM WIFI service. If you are not able to connect straight away to the Eduroam service on your device, you may need to download the approved Eduroam CAT tool <a href="/">'Here' to get online</a>
+            <br>Please follow the instructions once downloaded.
+            <br>Please do not hesitate to contact IT helpdesk or pop into the IT help desk within the Kilburn Building should you need any support.
+        </h4>
+        <h2>Using the UoM WIFI service</h2>
+        <p>To login, please enter your log in details below. Once authenticated you will be given limited Internet access for the duration of your session. You should be able to browse the web, access email, make SSH connections, run VPN and print.For more details see the <a>technical notes...</a>
+        <br>Please note that there is a <b>10 minute</b> inactivity timeout on your authenticated session,so you may be called upon to re-authenticate if this period is exceeded. It is highly recommended at this point to log in and use the Eduroam service..
+        </p>
+        <h2>VPN Instructions</h2>
+        <p>University of Manchester staff and students may launch the local VPN client for full Internet access without having to complete this web-based login. Visitors may similarly launch their IPSEC VPN client as normal to receive the level of access determined by the home institution. No further authentication is required.</p>
+        <form method="post">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <p><b>Terms:</b></p>
+            <div>
+                <input type="checkbox" name="terms" value="terms"/> <p>I accept the <a>terms of use</a></p>
+            </div>
+            <input type="submit" value="Log In" disabled>
+        </form>    
+        <p> Contact a staff member if you are experiencing difficulty logging in.</p>
+    </main>
+    <span id="copyright"> © Copyright 2024 </span>
+    <div id="background"></div>
+    <script>
+        const username = document.querySelector('input[type="text"]');
+        const password = document.querySelector('input[type="password"]');
+        const checkbox = document.querySelector('input[type="checkbox"]');
+        const submit = document.querySelector('input[type="submit"]');
+
+        function enableSubmit() {
+            if (username.value && password.value && checkbox.checked) {
+                submit.disabled = false;
+                submit.style.opacity = 1;
+                submit.style.cursor = 'pointer';
+            } else {
+                submit.disabled = true;
+                submit.style.opacity = 0.4;
+                submit.style.cursor = 'unset';
+            }
+        }
+
+        username.addEventListener('input', enableSubmit);
+        password.addEventListener('input', enableSubmit);
+        checkbox.addEventListener('change', enableSubmit);
+        enableSubmit();
+    </script>
+</body>
+</html>
