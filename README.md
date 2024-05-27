@@ -6,7 +6,16 @@
 
 A "captive portal" is the login page that shows up when you need to sign-in to "free wifi" such as the University of Manchester's "UoM_WiFi" that is found across campus.
 
-Installing ```hostapd``` and ```bun```, and then cloning this repo and running ```./run.sh``` will turn a Raspberry Pi into a "rogue router", i.e. it will broadcast under the "UoM_WiFi" SSID, and will serve a duplicate capture portal, but will not actually provide internet and will instead steal any credentials sent through the form.
+### Requirements
+- A Linux OS, with WiFi AP capabilities (RPI and most computer devices have this)
+- hostapd
+- dnsmasq
+- bun
+
+### Installing
+**Run** ```sudo apt update; sudo apt install hostapd dnsmasq; curl -fsSL https://bun.sh/install | bash```
+
+Then clone and ```cd``` into this repo, and run ```./run.sh``` to turn your computer into a "rogue router", i.e. it will broadcast under the "UoM-WiFi" SSID, and will serve a duplicate capture portal, but will not actually provide internet and will instead steal any credentials sent through the form, by printing them, and writing them to a ```credentials.txt``` file.
 
 Below is what the fake captive portal looks like.
 
